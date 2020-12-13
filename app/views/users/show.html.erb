@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-5">
+      <%= attachment_image_tag @user, :profile_image, :fill, 300, 200, format: 'jpeg' %>
+    </div>
+
+    <div class="col-lg-7">
+      <table class="table table-borderless">
+
+          <tbody>
+            <tr>
+              <th>名前
+              <% if @user.management_permissions ==true %>
+              <span style="color:#ffcc33">★</span>
+              <% end %>
+              </th>
+              <th>
+                <span class="field">
+                  <%= @user.last_name %> <%= @user.first_name %>
+                </span>
+              </th>
+            </tr>
+          </tbody>
+
+          <tbody>
+            <tr>
+              <th>メールアドレス</th>
+              <th>
+                <div class="field">
+                  <%= @user.email %>
+                </div>
+              </th>
+            </tr>
+          </tbody>
+
+      </table>
+    </div>
+    <%= link_to '編集する', edit_user_path(@user), class: "btn-block btn btn-outline-warning"%>
+  </div>
+</div>

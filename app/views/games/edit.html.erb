@@ -1,4 +1,9 @@
 <%= form_with model: @game, local:true do |f| %>
+
+<div>
+  <%= render 'layouts/errors', obj: @game %>
+</div>
+
 <div class="container">
   <div class="row">
     <div class="col-lg-5">
@@ -12,6 +17,17 @@
 
     <div class="col-lg-7">
       <table class="table table-borderless">
+
+        <tbody>
+          <tr>
+            <th>ジャンル</th>
+            <th>
+              <div class="field">
+                 <%= f.select :genre, Game.genres.keys.to_a,{} %>
+              </div>
+            </th>
+          </tr>
+        </tbody>
 
         <tbody>
             <tr>

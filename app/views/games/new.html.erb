@@ -1,6 +1,21 @@
 <%= form_with model: @game, local:true do |f| %>
+
+<div>
+  <%= render 'layouts/errors', obj: @game %>
+</div>
     <%= f.attachment_field :image %>
       <table class="table table-borderless">
+
+        <tbody>
+          <tr>
+            <th>ジャンル</th>
+            <th>
+              <div class="field">
+                 <%= f.select :genre, Game.genres.keys.to_a,{}%>
+              </div>
+            </th>
+          </tr>
+        </tbody>
 
         <tbody>
             <tr>
@@ -29,7 +44,7 @@
               <th>推定価格</th>
               <th>
                 <div class="field">
-                  <%= f.text_field :price %>
+                  <%= f.number_field :price %>
                 </div>
               </th>
             </tr>
@@ -40,7 +55,7 @@
               <th>プレイ人数</th>
               <th>
                 <div class="field">
-                  <%= f.text_field :play_timemin %>人以上<%= f.text_field :play_timemax %>人以下
+                  <%= f.number_field :play_timemin %>人以上<%= f.number_field :play_timemax %>人以下
                 </div>
               </th>
             </tr>
@@ -51,7 +66,7 @@
               <th>推定プレイ時間</th>
               <th>
                 <div class="field">
-                  <%= f.text_field :number_min %>～<%= f.text_field :number_max %>分
+                  <%= f.number_field :number_min %>～<%= f.number_field :number_max %>分
                 </div>
               </th>
             </tr>

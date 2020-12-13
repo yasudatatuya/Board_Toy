@@ -65,5 +65,8 @@
     </div>
   </div>
 </div>
+<% if current_user.management_permissions ==true %>
 <%= link_to '編集する',  edit_game_path(@game), class: "btn-block btn btn-outline-warning"%>
 <%= link_to '削除する',  game_path(@game),method: :delete, data: { confirm: '本当に削除しますか？'}, class: "btn-block btn btn-outline-warning"%>
+<% end %>
+<%= link_to '一覧に戻る',  :back, class: "btn-block btn btn-outline-warning"%>

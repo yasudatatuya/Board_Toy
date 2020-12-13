@@ -1,16 +1,37 @@
 class GamesController < ApplicationController
+
   def new
+    if current_user.management_permissions ==true
     @game = Game.new
+    else
+    redirect_to root_path
+    end
   end
 
   def index
     @games = Game.all
   end
 
+  def index_0
+    @games = Game.where(genre: 0)
+  end
+
+  def index_1
+    @games = Game.where(genre: 1)
+  end
+
+  def index_2
+    @games = Game.where(genre: 0)
+  end
+
+
   def create
     @game = Game.new(game_params)
-    @game.save
+    if @game.save
     redirect_to games_path
+    else
+    render 'new'
+    end
   end
 
   def show
@@ -18,13 +39,20 @@ class GamesController < ApplicationController
   end
 
   def edit
+    if current_user.management_permissions ==true
     @game =Game.find(params[:id])
+    else
+    redirect_to root_path
+    end
   end
 
   def update
     @game =Game.find(params[:id])
-    @game.update(game_params)
+    if @game.update(game_params)
     redirect_to game_path(@game)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
@@ -38,6 +66,6 @@ class GamesController < ApplicationController
 
   private
   def game_params
-    params.require(:game).permit(:name, :image, :introduction, :price, :play_timemin, :play_timemax, :number_min, :number_max)
+    params.require(:game).permit(:genre, :name, :image, :introduction, :price, :play_timemin, :play_timemax, :number_min, :number_max)
   end
 end
