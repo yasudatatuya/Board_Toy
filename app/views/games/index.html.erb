@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <h3>ジャンル</h3>
+      <div class="flex_row">
+      <% @games.each do |game| %>
+      <div class="flex_column">
+      <%= link_to game_path(game.id) do %>
+        <div>
+          <%= attachment_image_tag game, :image, size: '200x200' %>
+        </div>
+        <div>
+          <%= game.name %>
+        </div>
+      </div>
+      <% end %>
+      <% end %>
+      </div>
+  </div>
+</div>

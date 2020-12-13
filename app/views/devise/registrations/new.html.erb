@@ -1,0 +1,63 @@
+<div class="top-message col-md-offset-6 col-md-12">
+  <div class="btn-wrapper">
+    <h3>新規会員登録</h3>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+        <table class="table table-borderless ">
+
+          <tbody>
+            <tr>
+              <th>名前(姓)</th>
+              <th>
+                <span class="field">
+                  <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+                </span>
+              　　(名)
+                <span class="field">
+                  <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+                </span>
+              </th>
+            </tr>
+          </tbody>
+
+          <tbody>
+            <tr>
+              <th>メールアドレス</th>
+              <th>
+                <div class="field">
+                  <%= f.email_field :email, :size=>"55", autofocus: true, autocomplete: "email" %>
+                </div>
+              </th>
+            </tr>
+          </tbody>
+
+          <tbody>
+            <tr>
+              <th>パスワード（６文字以上）</th>
+              <th>
+                <div class="field">
+                  <%= f.password_field :password, :size=>"55",autocomplete: "new-password" %>
+                </div>
+              </th>
+            </tr>
+          </tbody>
+
+          <tbody>
+            <th>パスワード（確認用）</th>
+            <th>
+              <div class="field">
+                <%= f.password_field :password_confirmation, :size=>"55", autocomplete: "new-password" %>
+              </div>
+            </th>
+          </tbody>
+
+        </table>
+
+  <div class="center-block">
+      <div class="actions text-center">
+        <input type="submit" name="commit" value="　　新規登録　　" class="btn btn-success" data-disable-with="　　新規登録　　">
+      </div>
+    </div>
+<% end %>
+

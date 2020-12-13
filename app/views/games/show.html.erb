@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-5">
+      <%= attachment_image_tag @game, :image, :fill, 300, 200, format: 'jpeg' %>
+    </div>
+
+    <div class="col-lg-7">
+      <table class="table table-borderless">
+
+        <tbody>
+            <tr>
+              <th>ゲーム名</th>
+              <th>
+                <div class="field">
+                  <%= @game.name %>
+                </div>
+              </th>
+            </tr>
+          </tbody>
+
+        <tbody>
+            <tr>
+              <th>商品説明</th>
+              <th>
+                <div class="field">
+                  <%= @game.introduction %>
+                </div>
+              </th>
+            </tr>
+          </tbody>
+
+        <tbody>
+            <tr>
+              <th>推定価格</th>
+              <th>
+                <div class="field">
+                    <%= @game.price %>
+                </div>
+              </th>
+            </tr>
+          </tbody>
+
+        <tbody>
+            <tr>
+              <th>プレイ人数</th>
+              <th>
+                <div class="field">
+                  <%= @game.play_timemin %>人以上<%= @game.play_timemax %>人以下
+                </div>
+              </th>
+            </tr>
+          </tbody>
+
+        <tbody>
+            <tr>
+              <th>推定プレイ時間</th>
+              <th>
+                <div class="field">
+                  <%= @game.number_min %>～<%= @game.number_max %>分
+                </div>
+              </th>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<%= link_to '編集する',  edit_game_path(@game), class: "btn-block btn btn-outline-warning"%>
+<%= link_to '削除する',  game_path(@game),method: :delete, data: { confirm: '本当に削除しますか？'}, class: "btn-block btn btn-outline-warning"%>

@@ -1,0 +1,19 @@
+<div class="top-message col-md-offset-6 col-md-12">
+    <div class="btn-wrapper">
+      <h3 class="field text-center">会員の方はこちらからログイン</h3>
+
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="field text-center">
+            メールアドレス
+            <%= f.email_field :email, :size=>"50", autofocus: true, autocomplete: "email" %>
+          </div>
+          <br>
+          <div class="field text-center">
+            パスワード　　<!---->
+            <%= f.password_field :password, :size=>"50", autocomplete: "current-password" %>
+          </div>
+          <br>
+          <div class="actions field text-center">
+            <input type="submit" name="commit" value="　ログイン　" class="btn btn-primary center-block" data-disable-with="　ログイン　">
+          </div>
+        <% end %>

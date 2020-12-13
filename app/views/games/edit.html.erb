@@ -1,0 +1,75 @@
+<%= form_with model: @game, local:true do |f| %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-5">
+      <div>
+        <%= attachment_image_tag @game, :image, :fill, 300, 200, format: 'jpeg' %>
+      </div>
+      <div>
+        <%= f.attachment_field :image %>
+      </div>
+    </div>
+
+    <div class="col-lg-7">
+      <table class="table table-borderless">
+
+        <tbody>
+            <tr>
+              <th>ゲーム名</th>
+              <th>
+                <div class="field">
+                  <%= f.text_field :name %>
+                </div>
+              </th>
+            </tr>
+          </tbody>
+
+        <tbody>
+            <tr>
+              <th>商品説明</th>
+              <th>
+                <div class="field">
+                  <%= f.text_area :introduction %>
+                </div>
+              </th>
+            </tr>
+          </tbody>
+
+        <tbody>
+            <tr>
+              <th>推定価格</th>
+              <th>
+                <div class="field">
+                  <%= f.text_field :price %>
+                </div>
+              </th>
+            </tr>
+          </tbody>
+
+        <tbody>
+            <tr>
+              <th>プレイ人数</th>
+              <th>
+                <div class="field">
+                  <%= f.text_field :play_timemin %>人以上<%= f.text_field :play_timemax %>人以下
+                </div>
+              </th>
+            </tr>
+          </tbody>
+
+        <tbody>
+            <tr>
+              <th>推定プレイ時間</th>
+              <th>
+                <div class="field">
+                  <%= f.text_field :number_min %>～<%= f.text_field :number_max %>分
+                </div>
+              </th>
+            </tr>
+          </tbody>
+      </table>
+
+      <div>
+        <%= f.submit "変更する", class: "btn btn-info active" %>
+      </div>
+<% end %>
