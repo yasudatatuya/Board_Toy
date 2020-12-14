@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_13_081645) do
+ActiveRecord::Schema.define(version: 2020_12_14_052913) do
+
+  create_table "gamecomments", force: :cascade do |t|
+    t.text "comment"
+    t.integer "user_id"
+    t.integer "game_id"
+    t.float "star"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "games", force: :cascade do |t|
     t.integer "genre", default: 0, null: false
