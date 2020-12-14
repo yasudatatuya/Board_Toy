@@ -21,7 +21,7 @@ class GamesController < ApplicationController
   end
 
   def index_2
-    @games = Game.where(genre: 0)
+    @games = Game.where(genre: 2)
   end
 
 
