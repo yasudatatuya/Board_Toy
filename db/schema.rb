@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_14_102302) do
+ActiveRecord::Schema.define(version: 2020_12_15_054823) do
 
   create_table "game_comments", force: :cascade do |t|
     t.text "comment"
@@ -35,6 +35,20 @@ ActiveRecord::Schema.define(version: 2020_12_14_102302) do
     t.boolean "ifchildren", default: false, null: false
     t.boolean "ifeasy", default: false, null: false
     t.boolean "ifhard", default: false, null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "topic_id"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "topics", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
