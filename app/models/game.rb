@@ -4,7 +4,7 @@ class Game < ApplicationRecord
   validates :name, presence: true
   validates :image, presence: true
   validates :introduction, presence: true
-  validates :price, numericality:{only_integer: true, greater_than: 100}
+  validates :price, numericality:{only_integer: true, greater_than: 0}
   validates :play_timemin, numericality:{only_integer: true, greater_than: 0}
   validates :play_timemax, numericality:{only_integer: true, greater_than: 0}
   validates :number_min, numericality:{only_integer: true, greater_than: 0}

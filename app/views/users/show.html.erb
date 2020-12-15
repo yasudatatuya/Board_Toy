@@ -9,14 +9,14 @@
 
           <tbody>
             <tr>
-              <th>名前
+              <th>ニックネーム
               <% if @user.management_permissions ==true %>
               <span style="color:#ffcc33">★</span>
               <% end %>
               </th>
               <th>
                 <span class="field">
-                  <%= @user.last_name %> <%= @user.first_name %>
+                  <%= @user.nickname %>
                 </span>
               </th>
             </tr>
