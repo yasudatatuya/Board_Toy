@@ -15,6 +15,7 @@
         <div class="navbar-nav mr-auto">
         </div>
         <ul class="navbar-nav">
+          <li><%= link_to ' 掲示板へ',  topics_path, class: "btn btn-outline-primary"%>&emsp;</li>
           <li><%= link_to ' ジャンル選択へ',  genres_games_path, class: "btn btn-outline-primary"%>&emsp;</li>
         <% if user_signed_in? %>
           <% if current_user.management_permissions ==true %>

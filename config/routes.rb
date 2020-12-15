@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   devise_for :users
   root to: 'home#top'
+  resources :topics, only:[:index, :show, :create, :destroy] do
+    resources :posts, only:[:create, :destroy]
+  end
   resources :games do
     collection do
       get :genres

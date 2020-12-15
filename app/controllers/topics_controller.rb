@@ -1,0 +1,33 @@
+class TopicsController < ApplicationController
+  def index
+    @topics = Topic.all
+    @topic = Topic.new
+  end
+
+  def show
+    @topic = Topic.find(params[:id])
+    @posts = Post.where(topic_id: params[:id])
+    @post = Post.new
+  end
+
+  def create
+    @topic = Topic.new(topic_params)
+    if @topic.save
+    redirect_to topics_path
+    else
+    render 'index'
+    end
+  end
+
+  def destroy
+    @topic = Topic.find(params[:id])
+    @topic.destroy
+    redirect_to topics_path
+  end
+
+  private
+  def topic_params
+    params.require(:topic).permit(:title)
+  end
+
+end

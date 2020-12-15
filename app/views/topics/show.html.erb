@@ -1,0 +1,13 @@
+<h1><%= @topic.title %></h1>
+<% @posts.each do |posts| %>
+  <%= posts.body %>
+<% end %>
+
+<%= form_with model: @post, url:topic_posts_path, local:true do |f| %>
+
+<%= f.text_area :body %>
+  <div>
+    <%= f.submit "新規登録", class: "btn btn-info active" %>
+  </div>
+
+<% end %>
