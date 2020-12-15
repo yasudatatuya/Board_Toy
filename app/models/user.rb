@@ -8,4 +8,6 @@ class User < ApplicationRecord
          validates :first_name, presence: true
 
          attachment :profile_image
+
+         has_many :game_comments, dependent: :destroy
 end

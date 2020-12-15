@@ -15,11 +15,11 @@
         <div class="navbar-nav mr-auto">
         </div>
         <ul class="navbar-nav">
+          <li><%= link_to ' ジャンル選択へ',  genres_games_path, class: "btn btn-outline-primary"%>&emsp;</li>
         <% if user_signed_in? %>
           <% if current_user.management_permissions ==true %>
           <li><%= link_to ' ゲーム詳細追加',  new_game_path, class: "btn btn-outline-primary"%>&emsp;</li>
           <% end %>
-          <li><%= link_to ' ジャンル選択へ',  genres_games_path, class: "btn btn-outline-primary"%>&emsp;</li>
           <li><%= link_to ' マイページ',  user_path(current_user), class: "btn btn-outline-primary"%>&emsp;</li>
           <li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete, class: "btn btn-outline-primary" %>
         <% else %>

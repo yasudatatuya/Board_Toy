@@ -1,0 +1,9 @@
+<%= form_with model: @gamecomment, url:game_game_comments_path, local:true do |f| %>
+
+
+  <%= f.text_area :comment %>
+  <div>
+    <%= f.submit "新規登録", class: "btn btn-info active" %>
+  </div>
+
+<% end %>

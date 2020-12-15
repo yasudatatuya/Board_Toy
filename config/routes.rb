@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
   root to: 'home#top'
   resources :games do
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
       get :index_1
       get :index_2
     end
+    resources :game_comments, only:[:new, :create, :show, :edit, :update, :destroy]
   end
   resources :users, only:[:show, :edit, :update]do
     collection do
