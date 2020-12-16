@@ -4,8 +4,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     @post.topic_id = @topic.id
-    binding.pry
-    if @topic.save
+    if @post.save
       redirect_to topic_path(@post.topic_id)
     else
       render 'topics/show'
@@ -13,6 +12,10 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    topic = Topic.find(params[:id])
+    post = Post.find(params[:topic_id])
+    post.destroy
+    redirect_to topic_path(topic.id)
   end
 
   private

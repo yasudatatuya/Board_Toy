@@ -1,13 +1,19 @@
 <h1><%= @topic.title %></h1>
+
+
 <% @topic.post.each do |posts| %>
   <%= posts.user.nickname %>
+  <%= posts.body %><%= link_to '削除',  topic_post_path(posts),method: :delete, class: "btn btn-info active"%>
 <% end %>
 
-<%= form_with model:[@topic,@post], local:true do |f| %>
 
-<%= f.text_area :body %>
-  <div>
-    <%= f.submit "コメントする", class: "btn btn-info active" %>
-  </div>
+<% if user_signed_in? %>
+  <%= form_with model:[@topic,@post], local:true do |f| %>
 
+  <%= f.text_area :body %>
+    <div>
+      <%= f.submit "コメントする", class: "btn btn-info active" %>
+    </div>
+
+  <% end %>
 <% end %>

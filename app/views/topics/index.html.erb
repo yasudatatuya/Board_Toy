@@ -1,14 +1,16 @@
 <h1>トピック一覧</h1>
 <% @topics.each do |topic| %>
   <li><%= link_to topic.title, topic_path(topic) %>
-      <%= link_to '削除',  topic_path(topic),method: :delete, data: { confirm: '本当に削除しますか？'}, class: "btn-block btn btn-outline-warning"%>
+      <%= link_to '削除',  topic_path(topic),method: :delete, data: { confirm: '本当に削除しますか？'}, class: "btn btn-info active"%>
   </li>
 <% end %>
 
-<h1>トピック登録</h1>
-<%= form_with model: @topic, local:true do |f| %>
-  <%= f.text_field :title %>
-  <div>
-    <%= f.submit "新規登録", class: "btn btn-info active" %>
-  </div>
+<% if user_signed_in? %>
+  <h1>トピック登録</h1>
+  <%= form_with model: @topic, local:true do |f| %>
+    <%= f.text_field :title %>
+    <div>
+      <%= f.submit "新規登録", class: "btn btn-info active" %>
+    </div>
+  <% end %>
 <% end %>
