@@ -4,10 +4,10 @@ class GameCommentsController < ApplicationController
   end
 
   def create
-    @gamecomment = GameComment.new
+    @gamecomment = GameComment.new(gamecomment_params)
     @gamecomment.user_id = current_user.id
     @gamecomment.game_id = Game.find(params[:game_id]).id
-    @gamecomment.comment = params[:game_comment][:comment]
+    #@gamecomment.comment = params[:game_comment][:comment]
     if @gamecomment.save
       redirect_to game_path(@gamecomment.game_id)
     else
@@ -16,7 +16,7 @@ class GameCommentsController < ApplicationController
   end
 
   def show
-    @gamecomment = GameComment.find(params[:id])
+    @gamecomment =GameComment.find(params[:id])
   end
 
   def edit
@@ -25,24 +25,23 @@ class GameCommentsController < ApplicationController
 
   def update
     @gamecomment = GameComment.find(params[:id])
-    @gamecomment.comment = params[:comment]
-    if @gamecomment.update
-    redirect_to game_game_comment_path(@gamecomment)
+    if @gamecomment.update(gamecomment_params)
+    redirect_to game_comment_path(@gamecomment)
     else
       render 'edit'
     end
   end
 
   def destroy
-    game = Game.find(params[:id])
     @gamecomment = GameComment.find(params[:id])
+    game = @gamecomment.game.id
     @gamecomment.destroy
-    redirect_to game_path(game.id)
+    redirect_to game_path(game)
   end
 
   private
   def gamecomment_params
-    params.require(:game_comments).permit(:comment, :user_id, :game_id)
+    params.require(:game_comment).permit(:comment, :user_id, :game_id)
   end
 
 end

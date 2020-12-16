@@ -1,4 +1,4 @@
 <%= @gamecomment.user.nickname %>
 <%= @gamecomment.comment %>
-<%= link_to '編集する', edit_game_game_comment_path(@gamecomment) %>
-<%= link_to '削除する', game_game_comment_path(@gamecomment),method: :delete, class: "btn btn-info active" %>
+<%= link_to '編集する', edit_game_comment_path(@gamecomment) %>
+<%= link_to '削除する', game_comment_path(@gamecomment),method: :delete, class: "btn btn-info active" %>

@@ -12,7 +12,8 @@ Rails.application.routes.draw do
       get :index_1
       get :index_2
     end
-    resources :game_comments, only:[:new, :create, :show, :edit, :update, :destroy]
+    resources :game_comments, shallow: true
+    #resources :game_comments, only:[:new, :create, :show, :edit, :update, :destroy]
   end
   resources :users, only:[:show, :edit, :update]do
     collection do
