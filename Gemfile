@@ -49,6 +49,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'pry-byebug'
+  gem 'pry-rails'
 end
 
 group :test do
@@ -69,6 +70,7 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 gem 'refile', require: 'refile/rails', github: 'refile/refile'
 gem 'refile-mini_magick'
+gem 'ransack'
 
 #gem 'dotenv-rails'
 #group :production do

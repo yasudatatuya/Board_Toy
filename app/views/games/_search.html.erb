@@ -1,0 +1,10 @@
+<%= search_form_for q do |f| %>
+
+      <%= f.search_field :name_cont %>
+      <%= f.number_field :price_lteq %>
+      <%= f.number_field :play_timemin_gteq %>以上〜
+      <%= f.number_field :play_timemax_lteq %>以下
+      <%= f.number_field :number_min_gteq %>以上〜
+      <%= f.number_field :number_max_lteq %>以下〜
+      <%= f.submit "検索" %>
+<% end %>
