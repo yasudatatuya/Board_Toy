@@ -9,19 +9,24 @@ class GamesController < ApplicationController
   end
 
   def index
-    @games = Game.all
+    @q = Game.ransack(params[:q])
+    @games = @q.result(distinct: true)
   end
 
   def index_0
-    @games = Game.where(genre: 0)
+    @q = Game.where(genre: 0).ransack(params[:q])
+    #@games = Game.where(genre: 0)
+    @games = @q.result(distinct: true)
   end
 
   def index_1
-    @games = Game.where(genre: 1)
+    @q = Game.where(genre: 1).ransack(params[:q])
+    @games = @q.result(distinct: true)
   end
 
   def index_2
-    @games = Game.where(genre: 0)
+    @q = Game.where(genre: 2).ransack(params[:q])
+    @games = @q.result(distinct: true)
   end
 
 
