@@ -9,31 +9,28 @@ class GamesController < ApplicationController
   end
 
   def index
-    @q = Game.ransack(params[:q])
-    @games = @q.result(distinct: true)
+    if params[:keyword].present?
+      @q = Game.where(genre: params[:genre]).ransack(params[:q])
+      @games = @q.result(distinct: true).soort(params[:keyword])
+    else
+      @q = Game.where(genre: params[:genre]).ransack(params[:q])
+      @games = @q.result(distinct: true)
+    end
   end
 
-  def index_0
-    @q = Game.where(genre: 0).ransack(params[:q])
-    #@games = Game.where(genre: 0)
-    @games = @q.result(distinct: true)
-  end
+  # def index
+  #   if params[:keyword].present?
+  #     @q = Game.where(genre: params[:genre]).sort(params[:keyword]).ransack(params[:q])
+  #   else
+  #     @q = Game.where(genre: params[:genre]).ransack(params[:q])
+  #   end
+  #   @games = @q.result(distinct: true).order("created_at DESC")
+  # end
 
-  def index_1
-    @q = Game.where(genre: 1).ransack(params[:q])
-    @games = @q.result(distinct: true)
-  end
-
-  def index_2
-    @q = Game.where(genre: 2).ransack(params[:q])
-    @games = @q.result(distinct: true)
-  end
-
-  def soot
-    selection = params[:keyword]
-    @games = Game.soot(selection)
-    render 'index'
-  end
+  # def index
+  #   @q = Game.where(genre: params[:genre]).ransack(params[:q])
+  #   @games = @q.result(distinct: true).order("created_at DESC")
+  # end
 
   def create
     @game = Game.new(game_params)

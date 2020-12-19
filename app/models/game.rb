@@ -14,14 +14,14 @@ class Game < ApplicationRecord
 
   has_many :game_comments, dependent: :destroy
 
+  #scope
+
   def average_score
     self.game_comments.sum(:rate) / self.game_comments.length
   end
 
-  def self.soot(selection)
+  def self.soort(selection)
     case selection
-    when 'pricecheap'
-      return all.order(price: :ASC)
     when 'pricehige'
       return all.order(price: :DESC)
     when 'playhige'
@@ -32,6 +32,8 @@ class Game < ApplicationRecord
       h = {}
       Game.all.map{|v| h["#{v.average_score}"] = v}
       return h.sort.reverse.to_h.map{|v| v[1]}
+    else 'pricecheap'
+      return all.order(price: :ASC)
     end
   end
 end

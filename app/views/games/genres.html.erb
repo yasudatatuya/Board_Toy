@@ -1,22 +1,15 @@
 <div class="container">
   <div class="row">
-    <%= link_to 'ゲーム一覧はこちら',  games_path, class: "btn-block btn btn-outline-secondary"%>
     <div class="col-lg-4">
-      <%= link_to '１０歳未満でも楽しめる',  index_0_games_path, class: "btn-block btn btn-outline-warning"%>
-
-      テキスト
-
-      <%= link_to '１０歳未満でも楽しめる',  index_0_games_path, class: "btn-block btn btn-outline-warning"%>
+      <%= link_to '１０歳未満でも楽しめる', games_path(genre: 0), class: "btn-block btn btn-outline-warning"%>
     </div>
 
     <div class="col-lg-4">
-      <%= link_to 'お手軽に楽しめる',  index_1_games_path, class: "btn-block btn btn-outline-primary"%>
-      <%= link_to 'お手軽に楽しめる',  index_1_games_path, class: "btn-block btn btn-outline-primary"%>
+      <%= link_to 'お手軽に楽しめる',  games_path(genre: 1), class: "btn-block btn btn-outline-primary"%>
     </div>
 
     <div class="col-lg-4">
-      <%= link_to 'じっくり楽しめる',  index_2_games_path, class: "btn-block btn btn-outline-success"%>
-      <%= link_to 'じっくり楽しめる',  index_2_games_path, class: "btn-block btn btn-outline-success"%>
+      <%= link_to 'じっくり楽しめる',  games_path(genre: 2), class: "btn-block btn btn-outline-primary"%>
     </div>
 
   </div>
