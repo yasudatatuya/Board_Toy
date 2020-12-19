@@ -18,4 +18,20 @@ class Game < ApplicationRecord
     self.game_comments.sum(:rate) / self.game_comments.length
   end
 
+  def self.soot(selection)
+    case selection
+    when 'pricecheap'
+      return all.order(price: :ASC)
+    when 'pricehige'
+      return all.order(price: :DESC)
+    when 'playhige'
+      return all.order(number_max: :DESC)
+    when 'playtimecheap'
+      return all.order(play_timemin: :ASC)
+    when 'evaluationhige'
+      h = {}
+      Game.all.map{|v| h["#{v.average_score}"] = v}
+      return h.sort.reverse.to_h.map{|v| v[1]}
+    end
+  end
 end

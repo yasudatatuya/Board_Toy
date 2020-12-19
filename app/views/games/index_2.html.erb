@@ -4,22 +4,6 @@
 
     <%= render 'search', q: @q %>
 
-      <div class="flex_row">
-      <% @games.each do |game| %>
-      <div class="flex_column">
-      <%= link_to game_path(game.id) do %>
-        <div>
-          <%= attachment_image_tag game, :image, size: '200x200' %>
-        </div>
-        <div>
-          <%= game.name %>
-        </div>
-        <div>
-          <%= game.genre %>
-        </div>
-      </div>
-      <% end %>
-      <% end %>
-      </div>
+    <%= render 'index', gam: @games %>
   </div>
 </div>

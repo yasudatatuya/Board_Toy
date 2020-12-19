@@ -2,38 +2,16 @@
   <div class="row">
     <h3>ジャンル</h3>
 
-    <%= render 'search', q: @q %>
+　<%= render 'search', q: @q %>
 
-      <div class="flex_row">
-      <% @games.each do |game| %>
-      <div class="flex_column">
-      <%= link_to game_path(game.id) do %>
-        <div>
-          <%= attachment_image_tag game, :image, size: '200x200' %>
-        </div>
-        <div>
-          <%= game.name %>
-        </div>
-        <div>
-          <%= game.genre %>
-        </div>
-        <div>
-          <div id="star-rate-<%= game.id %>"></div>
-          <script>
-          $('#star-rate-<%= game.id %>').raty({
-            size: 36,
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-            starHalf: '<%= asset_path('star-half.png') %>',
-            half: true,
-            readOnly: true,
-            score:<%= game.average_score %>
-          });
-          </script>
-        </div>
-      </div>
-      <% end %>
-      <% end %>
-      </div>
+  <div class="search-form">
+    <%= form_with model: @game, url: soot_path, method: :get, local: true do |f| %>
+      <%= f.select :keyword, options_for_select({ "価格昇順" => "pricecheap", "価格降順" => "pricehige",
+      "最大プレイ人数降順" => "playhige", "プレイ時間昇順" => "playtimecheap","評価降順" => "evaluationhige" }) %>
+      <%= f.submit '検索' %>
+    <% end %>
+  </div>
+
+    <%= render 'index', gam: @games %>
   </div>
 </div>
