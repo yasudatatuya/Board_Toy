@@ -29,6 +29,11 @@ class GamesController < ApplicationController
     @games = @q.result(distinct: true)
   end
 
+  def soot
+    selection = params[:keyword]
+    @games = Game.soot(selection)
+    render 'index'
+  end
 
   def create
     @game = Game.new(game_params)
