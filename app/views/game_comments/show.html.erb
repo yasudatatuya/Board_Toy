@@ -1,4 +1,21 @@
 <%= @gamecomment.user.nickname %>
 <%= @gamecomment.comment %>
+評価：<%= @gamecomment.rate %>点
+        <!--星評価-->
+         <div id="star-rate-<%= @gamecomment.id %>"></div>
+          <script>
+          $('#star-rate-<%= @gamecomment.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= @gamecomment.rate %>,
+          });
+          </script>
+        <!--/星評価-->
+
+
 <%= link_to '編集する', edit_game_comment_path(@gamecomment) %>
 <%= link_to '削除する', game_comment_path(@gamecomment),method: :delete, class: "btn btn-info active" %>

@@ -88,7 +88,30 @@
               </th>
             </tr>
           </tbody>
+          <tbody>
+            <tr>
+              <th>星の数</th>
+              <th>
+                <div class="field">
+                  <!--星評価-->
+         <div id="star-rate-<%= gamecomment.id %>"></div>
+          <script>
+          $('#star-rate-<%= gamecomment.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= gamecomment.rate %>,
+          });
+          </script>
+        <!--/星評価-->
 
+                </div>
+              </th>
+            </tr>
+          </tbody>
           <tbody>
             <tr>
               <th>show</th>
