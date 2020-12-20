@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
   def show
     @user = current_user
   end
@@ -10,7 +11,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-    redirect_to user_path(@user)
+    redirect_to user_path(current_user)
     else
     render 'edit'
     end
@@ -27,7 +28,7 @@ class UsersController < ApplicationController
   end
   private
   def user_params
-    params.require(:user).permit(:email, :last_name, :first_name, :profile_image, :introduction, :management_permissions)
+    params.require(:user).permit(:email, :name, :nickname, :profile_image, :introduction, :management_permissions)
   end
 
 end

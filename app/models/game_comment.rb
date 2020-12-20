@@ -1,4 +1,7 @@
 class GameComment < ApplicationRecord
+  validates :title, presence: true
+  validates :rate, presence: true
+
 
   belongs_to :user
   belongs_to :game

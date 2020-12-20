@@ -1,5 +1,9 @@
 <%= form_with model: @gamecomment, local:true do |f| %>
 
+<div>
+  <%= render 'layouts/errors', obj: @gamecomment %>
+</div>
+
 <!-- 評価 -->
   <div class="form-group row" id="star">
     <%= f.label :rate,'評価 '%>
@@ -19,6 +23,8 @@
 
   });
   </script>
+
+  <%= f.text_area :title %>
 
   <%= f.text_area :comment %>
   <div>

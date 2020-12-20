@@ -2,10 +2,18 @@
 
 
 <% @topic.post.each do |posts| %>
-  <%= posts.user.nickname %>
-  <%= posts.body %><%= link_to '削除',  topic_post_path(posts),method: :delete, class: "btn btn-info active"%>
+  <%= link_to user_likes_path(posts.user_id) do %>
+    <%= posts.user.nickname %>
+    <% if posts.user.management_permissions ==true %>
+    <span style="color:#ffcc33">★</span>
+    <% end %>
+  <% end %>
+  <%= posts.body %>
+  <% if current_user == posts.user %>
+    <%= link_to '削除',  topic_post_path(posts),method: :delete %>
+  <% end %>
+  </br>
 <% end %>
-
 
 <% if user_signed_in? %>
   <%= form_with model:[@topic,@post], local:true do |f| %>

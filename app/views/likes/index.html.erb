@@ -1,31 +1,11 @@
-<div class="flex_row">
-      <% @games.each do |game| %>
-      <div class="flex_column">
-      <%= link_to game_path(game.id) do %>
-        <div>
-          <%= attachment_image_tag game, :image, size: '200x200' %>
-        </div>
-        <div>
-          <%= game.name %>
-        </div>
-        <div>
-          <%= game.genre %>
-        </div>
-        <div>
-          <div id="star-rate-<%= game.id %>"></div>
-          <script>
-          $('#star-rate-<%= game.id %>').raty({
-            size: 36,
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-            starHalf: '<%= asset_path('star-half.png') %>',
-            half: true,
-            readOnly: true,
-            score:<%= game.average_score %>
-          });
-          </script>
-        </div>
-      </div>
-      <% end %>
-      <% end %>
-      </div>
+<div class="container">
+  <div class="row">
+
+    <h3><%= @user.nickname %>のお気に入り一覧</h3>
+
+  <%= render 'layouts/index', gam: @games %>
+  <% if @user == current_user %>
+    <%= link_to 'マイページに戻る', user_path(current_user), class: "btn-block btn btn-outline-warning"%>
+  <% end %>
+  </div>
+</div>

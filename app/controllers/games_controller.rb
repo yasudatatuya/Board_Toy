@@ -17,11 +17,11 @@ class GamesController < ApplicationController
       @games = @q.result(distinct: true)
     end
   end
-  
+
   def create
     @game = Game.new(game_params)
     if @game.save
-    redirect_to games_path
+    redirect_to  genres_games_path
     else
     render 'new'
     end

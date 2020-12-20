@@ -4,18 +4,7 @@
   <%= render 'layouts/errors', obj: @game %>
 </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-lg-5">
-      <div>
-        <%= attachment_image_tag @game, :image, :fill, 300, 200, format: 'jpeg' %>
-      </div>
-      <div>
-        <%= f.attachment_field :image %>
-      </div>
-    </div>
-
-    <div class="col-lg-7">
+    <%= f.attachment_field :image %>
       <table class="table table-borderless">
 
         <tbody>
@@ -23,7 +12,7 @@
             <th>ジャンル</th>
             <th>
               <div class="field">
-                 <%= f.select :genre, Game.genres.keys.to_a,{} %>
+                 <%= f.select :genre, Game.genres.keys.to_a,{}%>
               </div>
             </th>
           </tr>
@@ -56,7 +45,7 @@
               <th>推定価格</th>
               <th>
                 <div class="field">
-                  <%= f.text_field :price %>
+                  <%= f.number_field :price %>
                 </div>
               </th>
             </tr>
@@ -67,7 +56,7 @@
               <th>推定プレイ時間</th>
               <th>
                 <div class="field">
-                  <%= f.text_field :play_timemin %>人以上<%= f.text_field :play_timemax %>人以下
+                  <%= f.number_field :play_timemin %>～<%= f.number_field :play_timemax %>分
                 </div>
               </th>
             </tr>
@@ -78,7 +67,7 @@
               <th>プレイ人数</th>
               <th>
                 <div class="field">
-                  <%= f.text_field :number_min %>～<%= f.text_field :number_max %>分
+                  <%= f.number_field :number_min %>以上<%= f.number_field :number_max %>以下
                 </div>
               </th>
             </tr>
@@ -86,6 +75,6 @@
       </table>
 
       <div>
-        <%= f.submit "変更する", class: "btn btn-info active" %>
+        <%= f.submit "変更", class: "btn btn-info active" %>
       </div>
 <% end %>

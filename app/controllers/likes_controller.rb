@@ -1,6 +1,7 @@
 class LikesController < ApplicationController
-
+before_action :authenticate_user!
   def index
+    @user = User.find(params[:user_id])
     @games = User.find(params[:user_id]).liked_games
   end
 

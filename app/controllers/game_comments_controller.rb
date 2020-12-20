@@ -1,4 +1,5 @@
 class GameCommentsController < ApplicationController
+  before_action :authenticate_user!
   def new
     @gamecomment = GameComment.new
   end
@@ -37,7 +38,7 @@ class GameCommentsController < ApplicationController
 
   private
   def gamecomment_params
-    params.require(:game_comment).permit(:comment, :rate, :user_id, :game_id)
+    params.require(:game_comment).permit(:title, :comment, :rate, :user_id, :game_id)
   end
 
 end

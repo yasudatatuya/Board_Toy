@@ -8,7 +8,7 @@
       <%= f.number_field :number_max_lteq %>以下〜
 
        <%= select_tag :keyword, options_for_select({ "価格昇順" => "pricecheap", "価格降順" => "pricehige",
-      "最大プレイ人数降順" => "playhige", "プレイ時間昇順" => "playtimecheap","評価降順" => "evaluationhige" }) %>
+      "プレイ時間昇順" => "playtimecheap", "最大プレイ人数降順" => "playhige", "評価降順" => "evaluationhige" }) %>
 
       <%= f.submit "検索" %>
 <% end %>

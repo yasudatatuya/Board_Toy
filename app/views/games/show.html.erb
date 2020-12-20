@@ -42,18 +42,7 @@
               <th>推定価格</th>
               <th>
                 <div class="field">
-                    <%= @game.price %>
-                </div>
-              </th>
-            </tr>
-          </tbody>
-
-        <tbody>
-            <tr>
-              <th>プレイ人数</th>
-              <th>
-                <div class="field">
-                  <%= @game.play_timemin %>人以上<%= @game.play_timemax %>人以下
+                    約<%= @game.price %>円
                 </div>
               </th>
             </tr>
@@ -64,7 +53,18 @@
               <th>推定プレイ時間</th>
               <th>
                 <div class="field">
-                  <%= @game.number_min %>～<%= @game.number_max %>分
+                  <%= @game.play_timemin %>～<%= @game.play_timemax %>分
+                </div>
+              </th>
+            </tr>
+          </tbody>
+
+        <tbody>
+            <tr>
+              <th>プレイ人数</th>
+              <th>
+                <div class="field">
+                  <%= @game.number_min %>以上<%= @game.number_max %>以下
                 </div>
               </th>
             </tr>
@@ -80,12 +80,27 @@
               <th>名前</th>
               <th>
                 <div class="field">
-                  <%= gamecomment.user.nickname %> <%= gamecomment.usefuls.count %>人がこれが役に立ったと考えています
+                  <%= link_to user_likes_path(gamecomment.user_id) do %>
+                    <%= gamecomment.user.nickname %>
+                  <% end %>
+
+                  <%= gamecomment.usefuls.count %>人がこれが役に立ったと考えています
                 </div>
               </th>
             </tr>
           </tbody>
 
+          <tbody>
+            <tr>
+              <th>タイトル</th>
+              <th>
+                <div class="field">
+                  <%= gamecomment.title %>
+                </div>
+              </th>
+            </tr>
+          </tbody>
+          <tbody>
           <tbody>
             <tr>
               <th>コメント</th>
@@ -96,6 +111,7 @@
               </th>
             </tr>
           </tbody>
+
           <tbody>
             <tr>
               <th>星の数</th>
@@ -125,7 +141,9 @@
               <th>show</th>
               <th>
                 <div class="field">
-                  <%= link_to '編集', edit_game_comment_path(gamecomment) , class: "btn-block btn btn-outline-warning"%>
+                  <% if current_user == gamecomment.user %>
+                    <%= link_to '編集', edit_game_comment_path(gamecomment) , class: "btn-block btn btn-outline-warning"%>
+                  <% end %>
                 </div>
               </th>
             </tr>

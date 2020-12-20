@@ -1,7 +1,9 @@
 <h1>トピック一覧</h1>
 <% @topics.each do |topic| %>
   <li><%= link_to topic.title, topic_path(topic) %>
-      <%= link_to '削除',  topic_path(topic),method: :delete, data: { confirm: '本当に削除しますか？'}, class: "btn btn-info active"%>
+      <% if user_signed_in? && current_user.management_permissions ==true %>
+        <%= link_to '削除',  topic_path(topic),method: :delete, data: { confirm: '本当に削除しますか？'}, class: "btn btn-info active"%>
+      <% end %>
   </li>
 <% end %>
 
