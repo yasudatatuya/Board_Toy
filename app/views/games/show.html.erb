@@ -13,6 +13,14 @@
               <th>
                 <div class="field">
                   <%= @game.name %>
+                  <% if user_signed_in? && Like.like_method(@game, current_user) %>
+                    <%= link_to 'お気にいり解除',  game_like_path(@game), method: :delete %>
+                  <% elsif user_signed_in? %>
+                    <%= link_to 'お気にいり登録',  game_likes_path(@game), method: :post %>
+                  <% else %>
+                  <% end %>
+
+
                 </div>
               </th>
             </tr>
@@ -72,7 +80,7 @@
               <th>名前</th>
               <th>
                 <div class="field">
-                  <%= gamecomment.user.nickname %>
+                  <%= gamecomment.user.nickname %> <%= gamecomment.usefuls.count %>人がこれが役に立ったと考えています
                 </div>
               </th>
             </tr>
@@ -117,11 +125,28 @@
               <th>show</th>
               <th>
                 <div class="field">
-                  <%= link_to 'show', game_comment_path(gamecomment) , class: "btn-block btn btn-outline-warning"%>
+                  <%= link_to '編集', edit_game_comment_path(gamecomment) , class: "btn-block btn btn-outline-warning"%>
                 </div>
               </th>
             </tr>
           </tbody>
+           <tbody>
+            <tr>
+              <th>役に立った</th>
+              <th>
+                <div class="field">
+                  <% if gamecomment.useful_by(current_user) %>
+                    フィードバックをお寄せいただきありがとうございます。
+                  <% else %>
+                    <%= link_to '役に立った', game_comment_useful_index_path(gamecomment) , method: :post %>
+                  <% end %>
+                </div>
+
+                </div>
+              </th>
+            </tr>
+          </tbody>
+
 
 
         <% end %>

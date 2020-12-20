@@ -15,10 +15,6 @@ class GameCommentsController < ApplicationController
     end
   end
 
-  def show
-    @gamecomment =GameComment.find(params[:id])
-  end
-
   def edit
     @gamecomment = GameComment.find(params[:id])
   end
@@ -26,7 +22,7 @@ class GameCommentsController < ApplicationController
   def update
     @gamecomment = GameComment.find(params[:id])
     if @gamecomment.update(gamecomment_params)
-    redirect_to game_comment_path(@gamecomment)
+    redirect_to game_path(@gamecomment.game.id)
     else
       render 'edit'
     end

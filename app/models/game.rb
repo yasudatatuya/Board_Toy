@@ -13,6 +13,7 @@ class Game < ApplicationRecord
   enum genre: { １０歳未満でも楽しめる: 0, お手軽に楽しめる: 1, じっくり楽しめる: 2 }
 
   has_many :game_comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   #scope
 

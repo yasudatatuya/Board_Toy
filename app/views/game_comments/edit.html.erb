@@ -16,13 +16,14 @@
     scoreName: 'game_comment[rate]',
     score: <%= @gamecomment.rate %>,
     half: true,
-    
+
   });
   </script>
 
   <%= f.text_area :comment %>
   <div>
-    <%= f.submit "新規登録", class: "btn btn-info active" %>
+    <%= f.submit "編集完了", class: "btn btn-info active" %>
   </div>
 
 <% end %>
+<%= link_to '削除する', game_comment_path(@gamecomment),method: :delete, class: "btn btn-info active" %>

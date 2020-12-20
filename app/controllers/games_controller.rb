@@ -17,21 +17,7 @@ class GamesController < ApplicationController
       @games = @q.result(distinct: true)
     end
   end
-
-  # def index
-  #   if params[:keyword].present?
-  #     @q = Game.where(genre: params[:genre]).sort(params[:keyword]).ransack(params[:q])
-  #   else
-  #     @q = Game.where(genre: params[:genre]).ransack(params[:q])
-  #   end
-  #   @games = @q.result(distinct: true).order("created_at DESC")
-  # end
-
-  # def index
-  #   @q = Game.where(genre: params[:genre]).ransack(params[:q])
-  #   @games = @q.result(distinct: true).order("created_at DESC")
-  # end
-
+  
   def create
     @game = Game.new(game_params)
     if @game.save
