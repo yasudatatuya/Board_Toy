@@ -24,10 +24,10 @@
 
           <tbody>
             <tr>
-              <th>メールアドレス</th>
+              <th>一言コメント</th>
               <th>
                 <div class="field">
-                  <%= @user.email %>
+                  <%= @user.comment %>
                 </div>
               </th>
             </tr>
@@ -35,9 +35,13 @@
 
       </table>
     </div>
-    <%= link_to 'お気にいり一覧', user_likes_path(@user), class: "btn-block btn btn-outline-warning"%>
 
-    <%= link_to '編集する', edit_user_path(@user), class: "btn-block btn btn-outline-warning"%>
+    <h3><%= @user.nickname %>のお気に入り一覧</h3>
 
+    <%= render 'layouts/index', gam: @games %>
+
+    <% if @user == current_user %>
+      <%= link_to '編集する', edit_user_path(@user), class: "btn-block btn btn-outline-warning"%>
+    <% end %>
   </div>
 </div>

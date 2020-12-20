@@ -22,7 +22,6 @@
           <li><%= link_to ' 掲示板へ',  topics_path, class: "btn btn-outline-primary"%>&emsp;</li>
           <li><%= link_to ' ジャンル選択へ',  genres_games_path, class: "btn btn-outline-primary"%>&emsp;</li>
         <% if user_signed_in? %>
-          <li><%= link_to ' お気に入り商品', user_likes_path(current_user), class: "btn btn-outline-primary"%>&emsp;</li>
           <li><%= link_to ' マイページ',  user_path(current_user), class: "btn btn-outline-primary"%>&emsp;</li>
           <li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete, class: "btn btn-outline-primary" %>
         <% else %>

@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
-  def show
-    @user = current_user
-  end
 
+  def show
+    @user = User.find(params[:id])
+    @games = User.find(params[:id]).liked_games
+  end
+  before_action :authenticate_user!
   def edit
     @user = current_user
   end
@@ -28,7 +29,7 @@ class UsersController < ApplicationController
   end
   private
   def user_params
-    params.require(:user).permit(:email, :name, :nickname, :profile_image, :introduction, :management_permissions)
+    params.require(:user).permit(:email, :name, :nickname, :comment, :profile_image, :introduction, :management_permissions)
   end
 
 end

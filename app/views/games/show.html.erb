@@ -80,7 +80,7 @@
               <th>名前</th>
               <th>
                 <div class="field">
-                  <%= link_to user_likes_path(gamecomment.user_id) do %>
+                  <%= link_to user_path(gamecomment.user_id) do %>
                     <%= gamecomment.user.nickname %>
                   <% end %>
 
