@@ -11,22 +11,41 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+      <nav class="navbar navbar-expand-lg navbar-light alert alert-secondary">
         <div class="navbar-nav mr-auto">
-          <li><%= link_to ' トップページへ',  root_path, class: "btn btn-outline-primary"%>&emsp;</li>
+            <%= link_to root_path do %>
+              <%= image_tag 'logo.png' , :size => '320x40' %>&emsp;<!-- ロゴ　-->
+            <% end %>
+
           <% if user_signed_in? && current_user.management_permissions ==true %>
-          <li><%= link_to ' ゲーム詳細追加',  new_game_path, class: "btn btn-outline-primary"%>&emsp;</li>
+           <%= link_to new_game_path do %>
+              <%= image_tag 'show.png' , :size => '160x40' %><!-- ゲーム詳細追加ページ　-->
+            <% end %>
           <% end %>
         </div>
         <ul class="navbar-nav">
-          <li><%= link_to ' 掲示板へ',  topics_path, class: "btn btn-outline-primary"%>&emsp;</li>
-          <li><%= link_to ' ジャンル選択へ',  genres_games_path, class: "btn btn-outline-primary"%>&emsp;</li>
+            <%= link_to topics_path do %>
+              <%= image_tag 'bulletinboard.png' , :size => '120x40' %>&emsp;<!-- 掲示板　-->
+            <% end %>
+
+            <%= link_to genres_games_path do %>
+              <%= image_tag 'genre.png' , :size => '120x40' %>&emsp;<!-- ジャンル選択　-->
+            <% end %>
         <% if user_signed_in? %>
-          <li><%= link_to ' マイページ',  user_path(current_user), class: "btn btn-outline-primary"%>&emsp;</li>
-          <li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete, class: "btn btn-outline-primary" %>
+            <%= link_to user_path(current_user) do %>
+              <%= image_tag 'mypage.png' , :size => '120x40' %>&emsp;<!-- マイページ　-->
+            <% end %>
+
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <%= image_tag 'loguout.png' , :size => '120x40' %>&emsp;<!-- ログアウト　-->
+          　<% end %>
         <% else %>
-          <li><%= link_to ' 新規登録',  new_user_registration_path, class: "btn btn-outline-primary"%>&emsp;</li>
-          <li><%= link_to 'ログイン', new_user_session_path, class: "btn btn-outline-primary"%></li>
+            <%= link_to new_user_registration_path do %>
+              <%= image_tag 'sainup.png' , :size => '120x40' %><!-- サインアップ　-->
+          　<% end %>
+            <%= link_to new_user_session_path do %>
+              <%= image_tag 'loguin.png' , :size => '120x40' %><!-- ログイン　-->
+          　<% end %>
         <% end %>
     </header>
   <body>
