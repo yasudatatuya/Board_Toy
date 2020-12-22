@@ -1,190 +1,102 @@
 <div class="container">
   <div class="row">
+    <div class="col-lg-12">
+      <span style="font-size:35px;"><%= @game.name %></span>
+        <% if user_signed_in? && Like.like_method(@game, current_user) %>
+          <%= link_to 'お気にいり解除',  game_like_path(@game), method: :delete, class: "btn btn-outline-warning"%>
+        <% elsif user_signed_in? %>
+          <%= link_to 'お気にいり登録',  game_likes_path(@game), method: :post, class: "btn btn-warning"%>
+        <% else %>
+        <% end %>
+    </div>
     <div class="col-lg-5">
-      <%= attachment_image_tag @game, :image, :fill, 300, 200, format: 'jpeg' %>
+      <div class="game-image">
+        <%= attachment_image_tag @game, :image, :fill, 400, 300, class: "image" %>
+      </div>
     </div>
 
     <div class="col-lg-7">
-      <table class="table table-borderless">
-
-        <tbody>
-            <tr>
-              <th>ゲーム名</th>
-              <th>
-                <div class="field">
-                  <%= @game.name %>
-                  <% if user_signed_in? && Like.like_method(@game, current_user) %>
-                    <%= link_to 'お気にいり解除',  game_like_path(@game), method: :delete %>
-                  <% elsif user_signed_in? %>
-                    <%= link_to 'お気にいり登録',  game_likes_path(@game), method: :post %>
-                  <% else %>
-                  <% end %>
-
-
-                </div>
-              </th>
-            </tr>
-          </tbody>
-
-        <tbody>
-            <tr>
-              <th>商品説明</th>
-              <th>
-                <div class="field">
-                  <%= @game.introduction %>
-                </div>
-              </th>
-            </tr>
-          </tbody>
-
-        <tbody>
-            <tr>
-              <th>推定価格</th>
-              <th>
-                <div class="field">
-                    約<%= @game.price %>円
-                </div>
-              </th>
-            </tr>
-          </tbody>
-
-        <tbody>
-            <tr>
-              <th>推定プレイ時間</th>
-              <th>
-                <div class="field">
-                  <%= @game.play_timemin %>～<%= @game.play_timemax %>分
-                </div>
-              </th>
-            </tr>
-          </tbody>
-
-        <tbody>
-            <tr>
-              <th>プレイ人数</th>
-              <th>
-                <div class="field">
-                  <%= @game.number_min %>以上<%= @game.number_max %>以下
-                </div>
-              </th>
-            </tr>
-          </tbody>
-      </table>
+      <div class="introduction">
+        <div class="introduction-letter">
+          <%= simple_format(@game.introduction) %>
+        </div>
+      </div>
     </div>
 
-    <div class="col-lg-12">
-      <table class="table table-borderless">
-        <% @game.game_comments.each do |gamecomment| %>
-        <tbody>
-            <tr>
-              <th>名前</th>
-              <th>
-                <div class="field">
+    <div class="show">
+      <span style="font-size:30px;">
+        推定価格約<%= @game.price %>円&emsp;
+        推定プレイ時間<%= @game.play_timemin %>～<%= @game.play_timemax %>分&emsp;
+        プレイ人数<%= @game.number_min %>人以上<%= @game.number_max %>人以下&emsp;
+      </span>
+    </div>
+    <div class="col-lg-10">
+      <% @game.game_comments.each do |gamecomment| %>
+        <table class="table table-hover">
+          <thead><tr><th style="width:30%"></th><th  style="width:40%"></th><th style="width:30%"></tr></thead>
+            <tbody>
+              <tr>
+                <td>
                   <%= link_to user_path(gamecomment.user_id) do %>
-                    <%= gamecomment.user.nickname %>
+                    <%= attachment_image_tag gamecomment.user, :profile_image, :fill, 30, 30, fallback: "no_image.jpg", size: "35x35" ,format: 'jpeg'%>
+                    <span style="font-size:20px;"><%= gamecomment.user.nickname %></span>
                   <% end %>
-
-                  <%= gamecomment.usefuls.count %>人がこれが役に立ったと考えています
-                </div>
-              </th>
-            </tr>
-          </tbody>
-
-          <tbody>
-            <tr>
-              <th>タイトル</th>
-              <th>
-                <div class="field">
-                  <%= gamecomment.title %>
-                </div>
-              </th>
-            </tr>
-          </tbody>
-          <tbody>
-          <tbody>
-            <tr>
-              <th>コメント</th>
-              <th>
-                <div class="field">
-                  <%= gamecomment.comment %>
-                </div>
-              </th>
-            </tr>
-          </tbody>
-
-          <tbody>
-            <tr>
-              <th>星の数</th>
-              <th>
-                <div class="field">
-                  <!--星評価-->
-         <div id="star-rate-<%= gamecomment.id %>"></div>
-          <script>
-          $('#star-rate-<%= gamecomment.id %>').raty({
-            size: 36,
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-            starHalf: '<%= asset_path('star-half.png') %>',
-            half: true,
-            readOnly: true,
-            score: <%= gamecomment.rate %>,
-          });
-          </script>
-        <!--/星評価-->
-
-                </div>
-              </th>
-            </tr>
-          </tbody>
-          <tbody>
-            <tr>
-              <th>show</th>
-              <th>
-                <div class="field">
-                  <% if current_user == gamecomment.user %>
-                    <%= link_to '編集', edit_game_comment_path(gamecomment) , class: "btn-block btn btn-outline-warning"%>
-                  <% end %>
-                </div>
-              </th>
-            </tr>
-          </tbody>
-           <tbody>
-            <tr>
-              <th>役に立った</th>
-              <th>
-                <div class="field">
-                  <% if gamecomment.useful_by(current_user) %>
-                    フィードバックをお寄せいただきありがとうございます。
-                  <% else %>
-                    <%= link_to '役に立った', game_comment_useful_index_path(gamecomment) , method: :post %>
-                  <% end %>
-                </div>
-
-                </div>
-              </th>
-            </tr>
-          </tbody>
-
-
-
+                  <div style="font-size:15px;"><%= gamecomment.usefuls.count %>人がこれが役に立ったと考えています</div>
+                </td>
+                <td>
+                  <span style="font-size:20px;"><%= simple_format(gamecomment.title) %></span>
+                  <div class="field">
+                    <% if user_signed_in? %>
+                      <% if gamecomment.useful_by(current_user) %>
+                        <span style="color: #339900">フィードバックをお寄せいただきありがとうございます。</span>
+                      <% else %>
+                        <%= link_to '役に立った', game_comment_useful_index_path(gamecomment) , method: :post %>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </td>
+                <td>
+                  <div id="star-rate-<%= gamecomment.id %>"></div>
+                  <script>
+                    $('#star-rate-<%= gamecomment.id %>').raty({
+                      size: 36,
+                      starOff:  '<%= asset_path('star-off.png') %>',
+                      starOn : '<%= asset_path('star-on.png') %>',
+                      starHalf: '<%= asset_path('star-half.png') %>',
+                      half: true,
+                      readOnly: true,
+                      score:<%= gamecomment.rate %>,
+                    });
+                  </script>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        <div style="font-size:20px;"><%= simple_format(gamecomment.comment) %></div>
+        <% if current_user == gamecomment.user %>
+          <div class="text-right">
+            <%= link_to '(編集)',  edit_game_comment_path(gamecomment), class: "btn btn-success"%>
+            <%= link_to '(削除)',  game_comment_path(gamecomment),method: :delete, class: "btn btn-danger" %>
+          </div>
         <% end %>
-      </table>
+      <% end %>
     </div>
-  </div>
-</div>
 
+    <div class="col-lg-2">
+      <div class="bottom">
+        <% if user_signed_in? %>
+          <% if current_user.management_permissions ==true %>
+            <%= link_to 'コメントする', new_game_game_comment_path(@game.id) , class: "btn-block btn btn-warning"%>
+            <%= link_to '一覧に戻る',  games_path(genre: @game.genre), class: "btn-block btn btn-primary"%>
+            <%= link_to '編集する',  edit_game_path(@game), class: "btn-block btn btn-success"%>
+            <%= link_to '削除する',  game_path(@game),method: :delete, data: { confirm: '本当に削除しますか？'}, class: "btn-block btn btn-danger"%>
+          <% else %>
+            <%= link_to 'コメントする', new_game_game_comment_path(@game.id) , class: "btn-block btn btn-warning"%>
+            <%= link_to '一覧に戻る',  games_path(genre: @game.genre), class: "btn-block btn btn-primary"%>
+          <% end %>
+        <% else %>
+            <%= link_to '一覧に戻る',  games_path(genre: @game.genre), class: "btn-block btn btn-primary"%>
+        <% end %>
+      </div>
+    </div>
 
-
-<% if user_signed_in? %>
-  <% if current_user.management_permissions ==true %>
-    <%= link_to 'コメントする', new_game_game_comment_path(@game.id) , class: "btn-block btn btn-outline-warning"%>
-    <%= link_to '一覧に戻る',  games_path, class: "btn-block btn btn-outline-warning"%>
-    <%= link_to '編集する',  edit_game_path(@game), class: "btn-block btn btn-outline-warning"%>
-    <%= link_to '削除する',  game_path(@game),method: :delete, data: { confirm: '本当に削除しますか？'}, class: "btn-block btn btn-outline-warning"%>
-  <% else %>
-    <%= link_to 'コメントする', new_game_game_comment_path(@game.id) , class: "btn-block btn btn-outline-warning"%>
-    <%= link_to '前に戻る',  :back, class: "btn-block btn btn-outline-warning"%>
-  <% end %>
-<% else %>
-<%= link_to '前に戻る',  :back, class: "btn-block btn btn-outline-warning"%>
-<% end %>

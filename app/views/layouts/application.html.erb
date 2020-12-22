@@ -9,9 +9,9 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="background-color">
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light alert alert-secondary">
+        <nav class="navbar navbar-expand-lg navbar-light alert header">
         <div class="navbar-nav mr-auto">
 
             <% if user_signed_in? && current_user.management_permissions ==true %>

@@ -14,6 +14,9 @@
 
 @import "bootstrap";
 
+.background-color{
+  background-image: url("star2.png")
+}
 .body{
   margin-top:30px;
 }
@@ -52,5 +55,26 @@
         width: 40px;
     }
 }
-
-
+.introduction{
+  margin-top: 20px;
+  width: 625px;
+  height: 300px;
+  background-image: url("board.png")
+}
+.introduction-letter{
+  padding-top: 20px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+.header{
+  border: 2px #ffe14d solid;
+  background-image: url("star.png")
+}
+.show{
+  margin-left: auto;
+  margin-right: auto;
+  border: 3px #ffff00 solid;
+}
+.bottom{
+  margin-top: 20px;
+}
