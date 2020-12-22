@@ -1,24 +1,55 @@
-
-お疲れ様です。当サイトはボードゲームが好きな人が情報を共有し、
-語り合うことができる掲示板と、
-掲示板を元に作った商品紹介ページを掲載しています。
-
-
-
 <div class="container">
   <div class="row">
-    <div class="col-lg-6">
-      <%= link_to ' 掲示板へ',  topics_path, class: "btn-block btn btn-outline-warning"%>
-
-      テキスト
-
-      <%= link_to ' 掲示板へ',  topics_path, class: "btn-block btn btn-outline-warning"%>
+    <div class="col-lg-12">
+      <div class="background-color-top">
+        <h2>
+          お疲れ様です。当サイトはボードゲームが好きな人が、情報を共有しあう</br>
+          ことができる掲示板と、掲示板を参考に作ったゲーム紹介ページを</br>
+          掲載しています。紹介ページでは、<span class="text-warning">「１０歳未満でも楽しめる」</span></br>
+          <span class="text-primary">「お手軽に楽しめる」</span><span class="text-secondary">「じっくり楽しめる」</span>この３つのカテゴリーにわけ</br>
+          掲載してますので、詳細を確認し、自身に合うページへお進みください。</br>
+        </h2>
+      </div>
+    </div>
+    <div class="col-lg-12 margin">
+      <%= link_to '　　掲示板へ　　',  topics_path, class: "btn btn-outline-success"%>　*こちらは掲示板です。書き込みをするにはログインをお願いします
+    </div>
+    <div class="col-lg-4">
+      <%= link_to '１０歳未満でも楽しめる', games_path(genre: 0), class: "btn-block btn btn-outline-warning"%>
+      <div class="genre-1">
+        こちらでは６～１０歳未満のお子様も楽しめる<br>
+        ようなわかりやすく、足し算・引き算以外の<br>
+        一般常識を必要とせず、絵柄などに、暴力的<br>
+        性的描写の無いゲームを掲載しております。<br>
+        年末やお盆の時期などにいかがでしょうか？
+      </div>
     </div>
 
-    <div class="col-lg-6">
-      <%= link_to 'ゲーム紹介ページへ', genres_games_path, class: "btn-block btn btn-outline-primary"%>
-      テキスト
-      <%= link_to 'ゲーム紹介ページへ', genres_games_path, class: "btn-block btn btn-outline-primary"%>
+    <div class="col-lg-4">
+      <%= link_to 'お手軽に楽しめる',  games_path(genre: 1), class: "btn-block btn btn-outline-primary"%>
+      <div class="genre-2">
+        こちらでは１プレイが数分ででき、いつでも<br>
+        どこでもプレイ可能な持ち運びやすいゲーム<br>
+        を掲載しています。友人との旅行や飲み会の際<br>
+        鞄の中に入れて置くと大受け間違いなしな<br>
+        ゲームたちです。お値段もお手頃ですよ？
+      </div>
     </div>
+
+    <div class="col-lg-4">
+      <%= link_to 'じっくり楽しめる',  games_path(genre: 2), class: "btn-block btn btn-outline-secondary"%>
+      <div class="genre-3">
+        こちらでは麻雀のような腰を据えてじっくり<br>
+        楽しむゲームを掲載しています。持ち歩きには<br>
+        不向きで、１プレイ時間が長い反面、ゲーム性<br>
+        の高いゲームたちなので、友人を家に招いた際<br>
+        に、一夜を共にしてみてはいかかでしょう？
+
+
+      </div>
+
+    </div>
+
   </div>
 </div>
+

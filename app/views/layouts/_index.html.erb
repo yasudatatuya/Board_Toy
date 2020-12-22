@@ -1,17 +1,14 @@
-<div class="flex_row">
-      <% gam.each do |game| %>
-      <div class="flex_column">
+
+    <% gam.each do |game| %>
       <%= link_to game_path(game.id) do %>
-        <div>
+        <div class="game-image">
           <%= attachment_image_tag game, :image, size: '200x200' %>
         </div>
-        <div>
+        <span>
+        <div class="text-center">
           <%= game.name %>
         </div>
-        <div>
-          <%= game.genre %>
-        </div>
-        <div>
+        <div class="text-center">
           <div id="star-rate-<%= game.id %>"></div>
           <script>
           $('#star-rate-<%= game.id %>').raty({
@@ -25,7 +22,6 @@
           });
           </script>
         </div>
-      </div>
       <% end %>
-      <% end %>
-      </div>
+      &emsp;
+    <% end %>

@@ -8,7 +8,6 @@ Rails.application.routes.draw do
 
   resources :games do
     collection do
-      get :genres
     end
 
     resources :likes, only:[:create, :destroy]

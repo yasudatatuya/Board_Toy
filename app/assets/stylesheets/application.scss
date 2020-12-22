@@ -10,10 +10,47 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
  */
- @import "bootstrap";
+
+@import "bootstrap";
+
 .body{
   margin-top:30px;
 }
+.background-color-top{
+    margin-bottom: 20px;
+    background-color :#e6f2ff;
+    border: 2px #4da6ff solid;
+}
+.genre-1{
+    border: 2px #ffff00 solid;
+}
+.genre-2{
+    border: 2px #4da6ff solid;
+}
+.genre-3{
+    border: 2px #cccccc solid;
+}
+.margin{
+  margin-bottom: 20px;
+}
+.game-image{
+  margin-top: 20px;
+  border: 2px #ffe14d solid;
+}
+.search-word{
+    background-color :#cccccc;
+    border: 2px #000000 solid;
+}
+.search-price{
+  input[type="number"] {
+        width: 170px;
+    }
+}
+.search-number{
+  input[type="number"] {
+        width: 40px;
+    }
+}
+
+

@@ -5,11 +5,8 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     @post.topic_id = @topic.id
-    if @post.save
-      redirect_to topic_path(@post.topic_id)
-    else
-      render 'topics/show'
-    end
+    @post.save
+    redirect_to topic_path(@post.topic_id)
   end
 
   def destroy

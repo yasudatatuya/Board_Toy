@@ -21,7 +21,7 @@ class GamesController < ApplicationController
   def create
     @game = Game.new(game_params)
     if @game.save
-    redirect_to  genres_games_path
+    redirect_to
     else
     render 'new'
     end
@@ -52,9 +52,6 @@ class GamesController < ApplicationController
     @game =Game.find(params[:id])
     @game.destroy
     redirect_to games_path
-  end
-
-  def genres
   end
 
   private

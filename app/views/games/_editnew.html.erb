@@ -1,0 +1,73 @@
+<%= form_with model: ga, local:true do |f| %>
+
+  <div>
+    <%= render 'layouts/errors', obj: ga %>
+  </div>
+  <%= f.attachment_field :image %>
+    <table class="table table-borderless">
+      <tbody>
+        <tr>
+          <th>ジャンル</th>
+            <th>
+              <div class="field">
+                 <%= f.select :genre, Game.genres.keys.to_a,{}%>
+              </div>
+            </th>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <th>ゲーム名</th>
+          <th>
+            <div class="field">
+              <%= f.text_field :name %>
+            </div>
+          </th>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <th>商品説明</th>
+          <th>
+            <div class="field">
+              <%= f.text_area :introduction, :size =>"100x5"%>
+            </div>
+          </th>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <th>推定価格</th>
+          <th>
+            <div class="field">
+              <%= f.number_field :price %>
+            </div>
+          </th>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <th>推定プレイ時間</th>
+          <th>
+            <div class="field">
+              <span class="search-number"><%= f.number_field :play_timemin %><span style="font-size:20px;">&nbsp;～&nbsp;</span><%= f.number_field :play_timemax %>分</span>
+            </div>
+          </th>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <th>プレイ人数</th>
+          <th>
+            <div class="field">
+              <span class="search-number"><%= f.number_field :number_min %>以上<%= f.number_field :number_max %>以内</span>
+            </div>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+
+    <div>
+      <%= f.submit "登録・変更", class: "btn btn-info active" %>
+    </div>
+<% end %>
