@@ -73,7 +73,7 @@ gem 'refile-mini_magick'
 gem 'ransack'
 gem 'raty-rails', github: 'yuanping/raty-rails'
 gem 'kaminari'
-#gem 'dotenv-rails'
-#group :production do
-  #gem 'mysql2'
-#end
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end

@@ -18,14 +18,14 @@
 @import "bootstrap";
 
 .background-color{
-  background-image: url("star2.png")
+  background-image: image-url("star2.png")
 }
 .body{
   margin-top:30px;
 }
 .header{
   border: 2px #ffe14d solid;
-  background-image: url("star.png")
+  background-image: image-url("star.png")
 }
 .comemark{
   color: red;
