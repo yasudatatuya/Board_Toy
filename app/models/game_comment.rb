@@ -8,6 +8,6 @@ class GameComment < ApplicationRecord
   has_many :usefuls, dependent: :destroy
 
   def useful_by(user)
-    usefuls.where(user_id: user_id).exists?
+    usefuls.where(user_id: user.id).exists?
   end
 end
