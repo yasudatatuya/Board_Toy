@@ -1,34 +1,57 @@
 <%= form_with model: @gamecomment, local:true do |f| %>
 
-<div>
-  <%= render 'layouts/errors', obj: @gamecomment %>
-</div>
-
-<!-- 評価 -->
-  <div class="form-group row" id="star">
-    <%= f.label :rate,'評価 '%>
-    <%= f.hidden_field :rate, id: :review_star %>
+  <div>
+    <%= render 'layouts/errors', obj: @gamecomment %>
   </div>
 
-  <!-- 評価javascript -->
-  <script>
-  $('#star').raty({
-    size     : 36,
-    starOff:  '<%= asset_path('star-off.png') %>',
-    starOn : '<%= asset_path('star-on.png') %>',
-    starHalf: '<%= asset_path('star-half.png') %>',
-    scoreName: 'game_comment[rate]',
-    score: <%= @gamecomment.rate %>,
-    half: true,
+  <div class="col-lg-8">
+    <table class="table">
+      <thead><tr><th style="width:23%"></th><th style="width:37%"></th><th style="width:17%"></th><th style="width:23%"></th></tr></thead>
+      <tbody>
+        <tr>
+          <td>
+            <span style="font-size:25px;">タイトル</span><span class="comemark">※必須</span>
+          </td>
+          <td>
+            <%= f.text_field :title %>
+          </td>
+          <td>
+            <span style="font-size:25px;">評価</span><span class="comemark">※必須</span>
+          </td>
+          <td>
+            <!-- 評価 -->
+            <div class="form-group row" id="star">
+              <%= f.hidden_field :rate, id: :review_star %>
+            </div>
+            <!-- 評価javascript -->
+            <script>
+              $('#star').raty({
+                size     : 36,
+                starOff:  '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                scoreName: 'game_comment[rate]',
+                score: <%= @gamecomment.rate %>,
+                half: true,
 
-  });
-  </script>
+              });
+            </script>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-  <%= f.text_area :title %>
+  <div style="font-size:25px;">
+    &emsp;コメント
+  </div>
 
-  <%= f.text_area :comment %>
   <div>
-    <%= f.submit "編集完了", class: "btn btn-info active" %>
+    &emsp;<%= f.text_area :comment, :size =>"120x3"%>
+  </div>
+
+  <div>
+    &emsp;<%= f.submit "登録・編集", class: "btn btn-info active" %>
   </div>
 
 <% end %>
