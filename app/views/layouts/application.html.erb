@@ -13,8 +13,11 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light alert header">
         <div class="navbar-nav mr-auto">
-
-           
+            <% if user_signed_in? && current_user.management_permissions ==true %>
+             <%= link_to new_game_path do %>
+                <%= image_tag 'show.png' , :size => '160x40' %><!-- ゲーム詳細追加ページ　-->
+              <% end %>
+            <% end %>
         </div>
         <div class="navbar-nav">
             <%= link_to root_path do %>
