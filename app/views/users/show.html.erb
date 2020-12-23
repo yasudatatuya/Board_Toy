@@ -1,47 +1,35 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-5">
-      <%= attachment_image_tag @user, :profile_image, :fill, 300, 200, format: 'jpeg' %>
+    <div class="col-lg-4">
+      <%= attachment_image_tag @user, :profile_image, :fill, 200, 200, fallback: "no_image.jpg", size: "200x200" ,format: 'jpeg'%>
     </div>
 
-    <div class="col-lg-7">
+    <div class="col-lg-8">
       <table class="table table-borderless">
-
-          <tbody>
-            <tr>
-              <th>ニックネーム
-              <% if @user.management_permissions ==true %>
-              <span style="color:#ffcc33">★</span>
-              <% end %>
-              </th>
-              <th>
-                <span class="field">
-                  <%= @user.nickname %>
+        <tbody>
+          <tr>
+            <th style="width:25%"><span style="font-size:20px;">ニックネーム</span></th>
+            <th>
+                <span style="font-size:20px;"><%= @user.nickname %>
+                  <% if @user.management_permissions ==true %>
+                    <span style="color:#ffcc33">★</span>
+                  <% end %>
                 </span>
-              </th>
-            </tr>
-          </tbody>
-
-          <tbody>
-            <tr>
-              <th>一言コメント</th>
-              <th>
-                <div class="field">
-                  <%= @user.comment %>
-                </div>
-              </th>
-            </tr>
-          </tbody>
-
+                <% if @user == current_user %>
+                  <%= link_to '編集する', edit_user_path(@user), class: "btn btn-warning"%>
+                <% end %>
+            </th>
+          </tr>
+        </tbody>
       </table>
-    </div>
 
-    <h3><%= @user.nickname %>のお気に入り一覧</h3>
+      <h4>一言コメント</h4>
+
+      <h4 class="user-comment"><%= simple_format(@user.comment) %></h4>
+    </div>
+    <div class="col-lg-12"><h1 class="like"><%= @user.nickname %>のお気に入り一覧</h1></div>
 
     <%= render 'layouts/index', gam: @games %>
 
-    <% if @user == current_user %>
-      <%= link_to '編集する', edit_user_path(@user), class: "btn-block btn btn-outline-warning"%>
-    <% end %>
-  </div>
+
 </div>

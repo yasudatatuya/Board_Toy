@@ -36,7 +36,7 @@
               <th>コメント</th>
               <th>
                 <div class="field">
-                  <%= f.text_field :comment, autofocus: true, autocomplete: "comment" %>
+                  <%= f.text_area :comment, autofocus: true, :size =>"57x2", autocomplete: "comment" %>
                 </span>
                 </div>
               </th>
@@ -55,7 +55,7 @@
 
       </table>
     <div>
-      <%= f.submit "変更する", class: "btn btn-info active" %>
+      <%= f.submit "変更する", class: "btn btn-info" %>
     </div>
 
   </div>
