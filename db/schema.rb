@@ -23,15 +23,6 @@ ActiveRecord::Schema.define(version: 2020_12_23_121349) do
     t.float "rate"
   end
 
-  create_table "gamecomments", force: :cascade do |t|
-    t.text "comment"
-    t.integer "user_id"
-    t.integer "game_id"
-    t.float "star"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "games", force: :cascade do |t|
     t.integer "genre", default: 0, null: false
     t.string "name"
