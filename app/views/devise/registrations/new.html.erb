@@ -8,10 +8,10 @@
 
           <tbody>
             <tr>
-              <th>名前</th>
+              <th>名前<span class="comemark">※必須</span></th>
               <th>
                 <div class="field">
-                  <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+                  <%= f.text_field :name, autofocus: true, :size=>"55", autocomplete: "name" %>
                 </span>
                 </div>
               </th>
@@ -19,10 +19,10 @@
           </tbody>
           <tbody>
             <tr>
-              <th>ニックネーム</th>
+              <th>ニックネーム<span class="comemark">※必須</span></th>
               <th>
                 <div class="field">
-                  <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname" %>
+                  <%= f.text_field :nickname, autofocus: true, :size=>"55",autocomplete: "nickname" %>
                 </span>
                 </div>
               </th>
@@ -30,7 +30,7 @@
           </tbody>
           <tbody>
             <tr>
-              <th>メールアドレス</th>
+              <th>メールアドレス<span class="comemark">※必須</span></th>
               <th>
                 <div class="field">
                   <%= f.email_field :email, :size=>"55", autofocus: true, autocomplete: "email" %>
@@ -41,7 +41,7 @@
 
           <tbody>
             <tr>
-              <th>パスワード（６文字以上）</th>
+              <th>パスワード（６文字以上）<span class="comemark">※必須</span></th>
               <th>
                 <div class="field">
                   <%= f.password_field :password, :size=>"55",autocomplete: "new-password" %>
@@ -51,7 +51,7 @@
           </tbody>
 
           <tbody>
-            <th>パスワード（確認用）</th>
+            <th>パスワード（確認用）<span class="comemark">※必須</span></th>
             <th>
               <div class="field">
                 <%= f.password_field :password_confirmation, :size=>"55", autocomplete: "new-password" %>

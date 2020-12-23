@@ -10,7 +10,7 @@
 
           <tbody>
             <tr>
-              <th>名前</th>
+              <th>名前<span class="comemark">※必須</span></th>
               <th>
                 <div class="field">
                   <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
@@ -22,7 +22,7 @@
 
           <tbody>
             <tr>
-              <th>ニックネーム</th>
+              <th>ニックネーム<span class="comemark">※必須</span></th>
               <th>
                 <div class="field">
                   <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname" %>
@@ -33,7 +33,7 @@
           </tbody>
           <tbody>
             <tr>
-              <th>コメント</th>
+              <th>一言コメント</th>
               <th>
                 <div class="field">
                   <%= f.text_area :comment, autofocus: true, :size =>"57x2", autocomplete: "comment" %>
@@ -44,7 +44,7 @@
           </tbody>
           <tbody>
             <tr>
-              <th>メールアドレス</th>
+              <th>メールアドレス<span class="comemark">※必須</span></th>
               <th>
                 <div class="field">
                   <%= f.email_field :email, :size=>"55", autofocus: true, autocomplete: "email" %>

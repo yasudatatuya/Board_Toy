@@ -22,11 +22,10 @@
           </tr>
         </tbody>
       </table>
-
       <h4>一言コメント</h4>
-
-      <h4 class="user-comment"><%= simple_format(@user.comment) %></h4>
+      <h4><%= simple_format(@user.comment) %></h4>
     </div>
+
     <div class="col-lg-12"><h1 class="like"><%= @user.nickname %>のお気に入り一覧</h1></div>
 
     <%= render 'layouts/index', gam: @games %>

@@ -71,7 +71,7 @@ gem 'jquery-rails'
 gem 'refile', require: 'refile/rails', github: 'refile/refile'
 gem 'refile-mini_magick'
 gem 'ransack'
-gem 'raty-rails', github: 'yuanping/raty-rails' # Bleeding edge
+gem 'raty-rails', github: 'yuanping/raty-rails'
 #gem 'dotenv-rails'
 #group :production do
   #gem 'mysql2'

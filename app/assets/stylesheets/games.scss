@@ -1,3 +1,40 @@
 // Place all the styles related to the Games controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.search-word{
+    background-color :#cccccc;
+    border: 2px #000000 solid;
+}
+.search-price{
+  input[type="number"] {
+        width: 170px;
+    }
+}
+.search-number{
+  input[type="number"] {
+        width: 40px;
+    }
+}
+.introduction{
+  margin-top: 20px;
+  width: 625px;
+  height: 300px;
+  background-image: url("board.png")
+}
+.introduction-letter{
+  padding-top: 20px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+.game-image{
+  margin-top: 20px;
+  border: 2px #ffe14d solid;
+}
+.show{
+  margin-left: auto;
+  margin-right: auto;
+  border: 3px #ffff00 solid;
+}
+.bottom{
+  margin-top: 20px;
+}
