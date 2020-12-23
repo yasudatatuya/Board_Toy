@@ -28,7 +28,7 @@
               <% end %>
             </tbody>
           </table>
-          <%= link_to '掲示板に戻る',  topics_path, class: "btn btn-success"%><%= paginate @posts %>
+          <%= paginate @posts %>
           <% if user_signed_in? %>
             <%= form_with model:[@topic,@post], local:true do |f| %>
               <%= f.text_area :body, :size =>"144x3"%>

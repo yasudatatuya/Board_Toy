@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-4">
-      <%= attachment_image_tag @user, :profile_image, :fill, 200, 200, fallback: "no_image.jpg", size: "200x200" ,format: 'jpeg'%>
+      <%= attachment_image_tag @user, :profile_image, size: '400x300', fallback: "no_image.jpg", size: "200x200" ,format: 'jpeg'%>
     </div>
 
     <div class="col-lg-8">
