@@ -14,12 +14,21 @@ ActiveRecord::Schema.define(version: 2020_12_20_082640) do
 
   create_table "game_comments", force: :cascade do |t|
     t.text "comment"
-    t.float "rate"
     t.integer "user_id"
     t.integer "game_id"
+    t.float "star"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
+  end
+
+  create_table "gamecomments", force: :cascade do |t|
+    t.text "comment"
+    t.integer "user_id"
+    t.integer "game_id"
+    t.float "star"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "games", force: :cascade do |t|
@@ -37,6 +46,7 @@ ActiveRecord::Schema.define(version: 2020_12_20_082640) do
     t.boolean "ifchildren", default: false, null: false
     t.boolean "ifeasy", default: false, null: false
     t.boolean "ifhard", default: false, null: false
+    t.float "rate"
   end
 
   create_table "likes", force: :cascade do |t|
