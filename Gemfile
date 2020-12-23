@@ -72,6 +72,7 @@ gem 'refile', require: 'refile/rails', github: 'refile/refile'
 gem 'refile-mini_magick'
 gem 'ransack'
 gem 'raty-rails', github: 'yuanping/raty-rails'
+gem 'kaminari'
 #gem 'dotenv-rails'
 #group :production do
   #gem 'mysql2'

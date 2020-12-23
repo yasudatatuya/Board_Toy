@@ -10,10 +10,10 @@ class GamesController < ApplicationController
 
   def index
     if params[:keyword].present?
-      @q = Game.where(genre: params[:genre]).ransack(params[:q])
+      @q = Game.page(params[:page]).per(10).where(genre: params[:genre]).ransack(params[:q])
       @games = @q.result(distinct: true).soort(params[:keyword])
     else
-      @q = Game.where(genre: params[:genre]).ransack(params[:q])
+      @q = Game.page(params[:page]).per(10).where(genre: params[:genre]).ransack(params[:q])
       @games = @q.result(distinct: true)
     end
   end
@@ -29,6 +29,7 @@ class GamesController < ApplicationController
 
   def show
     @game =Game.find(params[:id])
+    @gamecomment = @game.game_comments.page(params[:page]).per(10)
   end
 
   def edit

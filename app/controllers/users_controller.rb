@@ -2,7 +2,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @games = User.find(params[:id]).liked_games
+    game = User.find(params[:id]).liked_games
+    @games = game.page(params[:page]).per(5)
   end
   before_action :authenticate_user!
   def edit
