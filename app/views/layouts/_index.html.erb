@@ -1,15 +1,14 @@
-    <% gam.each do |game| %>
-      <%= link_to game_path(game.id) do %>
-        <div class="game-image">
-          <%= attachment_image_tag game, :image, size: '200x200' %>
-        </div>
-        <span>
-        <div class="text-center">
-          <%= game.name %>
-        </div>
-        <div class="text-center">                          
-          <span id="star-rate-"><%= game.id %>"></span><span style="font-size:15px;"><%= game.game_comments.count %>コメ</span>
-          <script>
+<% gam.each do |game| %>
+  <%= link_to game_path(game.id) do %>
+    <div class="game-image">
+      <%= attachment_image_tag game, :image, size: '200x200' %>
+    </div>
+    <div class="text-center">
+    <span style="font-size:25px;"><%= simple_format(game.name) %></span>
+    </div>
+    <div class="text-center">
+      <span id="star-rate-<%= game.id %>"></span><span style="font-size:15px;"><%= game.game_comments.count %>コメ</span>
+        <script>
           $('#star-rate-<%= game.id %>').raty({
             size: 36,
             starOff:  '<%= asset_path('star-off.png') %>',
@@ -19,11 +18,11 @@
             readOnly: true,
             score:<%= game.average_score %>
           });
-          </script>
-        </div>
-      <% end %>
-      &emsp;
-    <% end %>
+        </script>
+      </div>     
+  <% end %>
+  &emsp;
+<% end %>
     
   
 
