@@ -7,8 +7,8 @@
         <div class="text-center">
           <%= game.name %>
         </div>
-        <div class="text-center">
-          <div id="star-rate-<%= game.id %>"></div>
+        <div class="text-center">                          
+          <span id="star-rate-<%= game.id %>"></span><span style="font-size:15px;"><%= game.game_comments.count %>コメ</span>
           <script>
           $('#star-rate-<%= game.id %>').raty({
             size: 36,
